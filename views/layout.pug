@@ -9,6 +9,15 @@ html(lang="en")
     link(href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet")
     link(rel="stylesheet", href="/stylesheets/style.css")
   body 
-    div.nav-bar 
-      a(href='') Collectify
-    block content
+    .nav-bar 
+      a(href='/') 
+        img(src='/images/logo.svg')
+        h1 Collectify
+
+      .links
+        a(href='/categories') Categories 
+        a(href='/items') All Items 
+        a(href='/users') Users
+
+    .page
+      block content

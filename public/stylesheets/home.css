@@ -1,0 +1,40 @@
+:root {
+  --primary-color: #2f27ce;
+  --bg-color: #fbfbfe;
+  --text-color: #000000;
+  --font-family: 'Roboto', sans-serif;
+  --font-size: 16px;
+  --page-padding-horizontal: 5.5rem;
+  --page-padding-vertical: 3rem;
+}
+
+.hero {
+  max-width: 40vw;
+}
+
+.hero h1 {
+  margin-bottom: 2rem;
+}
+
+.hero .desc {
+  word-spacing: 0.25ch;
+  line-height: 130%;
+  margin-bottom: 2.5rem;
+}
+
+.hero .counts {
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  color: var(--primary-color);
+  letter-spacing: 0.05ch;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-left: 1.5rem;
+}

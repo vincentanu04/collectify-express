@@ -1,0 +1,10 @@
+.categories h1 {
+  margin-bottom: 3rem;
+}
+
+.categories ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}

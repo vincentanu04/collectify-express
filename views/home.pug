@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  .hero
+    h1 Welcome to 
+      span.title #[em #{title}]
+      |  !
+
+    p.desc An inventory management application designed for hobbyists and collectors who want to organize and catalog their diverse collections. Whether you collect stamps, coins, action figures, or vintage records, Collectify aims to provide a practical and user-friendly platform for managing your treasures.
+
+    p.counts Currently, the app has the following record counts:
+
+    ul
+      li #[strong Categories:] #{category_count}.
+      li #[strong Items:] #{item_count}.
+      li #[strong Users:] #{user_count}. 
+
+
+  link(rel="stylesheet", href="/stylesheets/home.css")

@@ -4,6 +4,8 @@
   --text-color: #000000;
   --font-family: 'Roboto', sans-serif;
   --font-size: 16px;
+  --page-padding-horizontal: 5.5rem;
+  --page-padding-vertical: 3rem;
 }
 
 * {
@@ -18,14 +20,39 @@ body {
 
 .nav-bar {
   background-color: var(--bg-color);
-  padding: 1rem 6rem;
   border-bottom: 1px solid lightgrey;
+  padding: 1rem var(--page-padding-horizontal);
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-bar img {
+  width: 30px;
 }
 
 .nav-bar a {
-  font-size: 1.25rem;
-  font-weight: 900;
-  letter-spacing: 0.05ch;
+  display: flex;
+  align-items: center;
   text-decoration: none;
   color: var(--text-color);
+  font-size: 0.75rem;
+  gap: 0.5rem;
+}
+
+.nav-bar .links {
+  display: flex;
+  gap: 4rem;
+}
+
+.links a {
+  font-size: 1em;
+  transition: opacity 0.3s ease;
+}
+
+.links a:hover {
+  opacity: 60%;
+}
+
+.page {
+  padding: var(--page-padding-vertical) var(--page-padding-horizontal);
 }

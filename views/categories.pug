@@ -1,0 +1,16 @@
+extends layout 
+
+block content
+  .categories 
+    h1=title
+
+    ul 
+      each category, index in categories 
+        li 
+          a(href=category.url) #{category.name}
+        if index !== categories.length - 1
+          hr
+
+
+  link(rel="stylesheet", href="/stylesheets/categories.css")
+        
