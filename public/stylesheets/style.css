@@ -1,0 +1,31 @@
+:root {
+  --primary-color: #2f27ce;
+  --bg-color: #fbfbfe;
+  --text-color: #000000;
+  --font-family: 'Roboto', sans-serif;
+  --font-size: 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+}
+
+.nav-bar {
+  background-color: var(--bg-color);
+  padding: 1rem 6rem;
+  border-bottom: 1px solid lightgrey;
+}
+
+.nav-bar a {
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: 0.05ch;
+  text-decoration: none;
+  color: var(--text-color);
+}
