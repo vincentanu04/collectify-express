@@ -5,10 +5,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const helmet = require('helmet');
+const compression = require('compression');
 
 var indexRouter = require('./routes/index');
 
 var app = express();
+
+app.use(compression());
 
 const RateLimit = require('express-rate-limit');
 const limiter = RateLimit({
