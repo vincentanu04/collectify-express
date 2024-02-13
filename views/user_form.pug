@@ -1,0 +1,33 @@
+extends layout 
+
+block content 
+  .item_form 
+    .header
+      h1=title
+
+    form(method='post')
+      .form_field
+        label(for='first_name') First Name
+          span  *
+        input(type="text", name="first_name", placeholder='John...', value=(first_name ? first_name : ''), required)
+
+      .form_field
+        label(for='family_name') Family Name
+          span  *
+        input(type="text", name="family_name", placeholder='Doe...', value=(family_name ? family_name : ''), required)
+
+      .form_field 
+        label(for='about') About 
+        input(type='text' name='about' placeholder='About this user...' value=(about ? about : ''))
+
+      .form_field 
+        label(for='age') Age 
+        input(type='number' name='age' placeholder='20...' value=(age ? age : ''))
+
+      button(type='submit') Create
+
+    .errors
+      if errors
+        ul 
+          each error in errors
+            li=error.msg

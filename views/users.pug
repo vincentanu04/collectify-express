@@ -14,7 +14,7 @@ block content
           each user, index in users 
             li
               a(href=user.url) #{user.name} 
-              p Age: #{user.age}
+              p=`Age: ${user.age || 'unknown'}`
             if index < users.length - 1
               hr  
       else 

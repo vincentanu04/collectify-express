@@ -9,11 +9,11 @@ block content
       .detail
         .detail_header
           p #[strong About]: 
-          p.text_box=user.about
+          p.text_box=user.about || 'No information'
 
         .detail_header 
           p #[strong Age]: 
-          p #{user.age} years old.
+          p=user.age ? (user.age, 'years old.') : 'Unknown'
 
         p(style='margin-top: 1rem;') These are the items collected by #{user.first_name} #{user.family_name}:
 
@@ -22,7 +22,13 @@ block content
             each item, index in items 
               li
                 a(href=item.url) #{item.name} 
-              if index < items.length - 1
-                hr
+              hr
         else 
           p This user has no items...
+          hr
+
+      .detail_links
+        p
+          a.colored(href=user.url + '/update') Update user details 
+        p
+          a.colored_red(href=user.url + '/delete') Delete user  

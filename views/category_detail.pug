@@ -11,7 +11,13 @@ block content
           each item, index in items 
             li
               a(href=item.url) #{item.name} 
-            if index < items.length - 1
-              hr
+            hr
       else 
         p This category has no items...
+        hr
+
+      .detail_links
+        p
+          a.colored(href=category.url + '/update') Update category details 
+        p
+          a.colored_red(href=category.url + '/delete') Delete category  

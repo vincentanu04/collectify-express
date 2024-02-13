@@ -1,0 +1,50 @@
+extends layout 
+
+block content 
+  .item_form 
+    .header
+      h1=title
+
+    form(method='post')
+      .form_field
+        label(for='name') Name
+          span  *
+        input(type="text", name="name", placeholder='Item name...', value=(name ? name : ''), required)
+      .form_field
+        label(for='about') About
+        input(type="text", name="about", placeholder='This item is...', value=(info ? info : ''))
+
+      .form_field
+        label(for='category') Category
+          span  * 
+        select(name="category", required)
+          option(value='') -- Please select a category --
+          each val in categories
+            if category === val.name
+              option(value=val._id selected)= val.name
+            else
+              option(value=val._id)= val.name
+
+      .form_field 
+        label(for='collected_by') Collected by 
+          span  * 
+        select(name="collected_by", required)
+          option(value='') -- Please select a user --
+          each val in users
+            if user === val.name
+              option(value=val._id selected)= val.name
+            else
+              option(value=val._id)= val.name
+
+
+      .form_field 
+        label(for='collected_date') Collected date 
+        input(type='date' name='collected_date' value=(collected_date ? collected_date : ''))
+
+      button(type='submit') Create
+
+    .errors
+      if errors
+        ul 
+          each error in errors
+            li=error.msg

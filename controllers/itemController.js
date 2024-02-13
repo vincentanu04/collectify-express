@@ -1,6 +1,9 @@
 const asyncHandler = require('express-async-handler');
+const { body, validationResult } = require('express-validator');
 
 const Item = require('../models/item');
+const Category = require('../models/category');
+const User = require('../models/user');
 
 exports.index = asyncHandler(async (req, res, nect) => {
   const items = await Item.find()
@@ -26,3 +29,52 @@ exports.detail = asyncHandler(async (req, res, next) => {
 
   res.render('item_detail', { title: 'Item', item });
 });
+
+exports.create_get = asyncHandler(async (req, res, next) => {
+  const [categories, users] = await Promise.all([
+    Category.find().exec(),
+    User.find().exec(),
+  ]);
+  res.render('item_form', { title: 'Create an item', categories, users });
+});
+
+exports.create_post = [
+  body('name', 'Item name must be longer than 3 characters.')
+    .trim()
+    .isLength({ min: 3 })
+    .escape(),
+  body('about').escape(),
+  body('collected_date', 'Invalid date')
+    .optional({ values: 'falsy' })
+    .isISO8601()
+    .toDate(),
+  body('category').trim().isLength({ min: 1 }).escape(),
+  body('collected_by').trim().isLength({ min: 1 }).escape(),
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      const [categories, users] = await Promise.all([
+        Category.find().exec(),
+        User.find().exec(),
+      ]);
+
+      res.render('item_form', {
+        title: 'Create an item',
+        categories,
+        users,
+      });
+    } else {
+      await Item.create(
+        new Item({
+          name: req.body.name,
+          info: req.body.about,
+          category: req.body.category,
+          collected_by: req.body.collected_by,
+          collected_date: req.body.collected_date,
+        })
+      );
+      res.redirect('/items');
+    }
+  }),
+];

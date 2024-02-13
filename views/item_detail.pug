@@ -3,13 +3,13 @@ extends layout
 block content 
   .item_detail
     .header
-      h1 #{title}: #{item.name}
+      h1 #{title}: #[em #{item.name}]
 
     .body 
       .detail
         .detail_header
           p #[strong About]: 
-          p.text_box=item.info
+          p.text_box=item.info || 'No information'
 
         .detail_header
           p #[strong Category]: 
@@ -21,4 +21,12 @@ block content
 
         .detail_header 
           p #[strong Collected date]: 
-          p #{item.collected_date_formatted}.
+          p=item.collected_date_formatted || 'Unknown'
+
+        hr
+      
+      .detail_links
+        p
+          a.colored(href=item.url + '/update') Update item details 
+        p
+          a.colored_red(href=item.url + '/delete') Delete item  

@@ -90,12 +90,27 @@ button:hover {
   gap: 2rem;
 }
 
+.body .detail_links {
+  margin-block: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
 a.colored {
   color: var(--accent-color);
   text-decoration: none;
+  font-weight: 550;
 }
 
-a.colored:hover {
+a.colored_red {
+  color: red;
+  text-decoration: none;
+  font-weight: 550;
+}
+
+a.colored:hover,
+a.colored_red:hover {
   text-decoration: underline;
 }
 
@@ -147,6 +162,7 @@ body {
 
 .page {
   padding: var(--page-padding-vertical) var(--page-padding-horizontal);
+  margin-bottom: 1rem;
 }
 
 .footer {
@@ -224,12 +240,18 @@ form button {
   font-weight: 500;
 }
 
-.form_field input {
+.form_field input,
+.form_field select {
   border: 1px solid lightgray;
   border-radius: 4px;
   padding: 0.5em;
   font-size: small;
+  font-family: inherit;
   max-width: 40vw;
+}
+
+.form_field select {
+  max-width: 41.2vw;
 }
 
 .errors {
