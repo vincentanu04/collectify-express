@@ -10,4 +10,8 @@ const ItemSchema = new Schema({
   collected_by: { type: Schema.Types.ObjectId, ref: 'User', required: true },
 });
 
+ItemSchema.virtual('url').get(function () {
+  return `/items/${this._id}`;
+});
+
 module.exports = mongoose.model('Item', ItemSchema);

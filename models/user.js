@@ -9,4 +9,7 @@ const UserSchema = new Schema({
   age: { type: Number },
 });
 
+UserSchema.virtual('name').get(function () {
+  return `${this.first_name} ${this.family_name}`;
+});
 module.exports = mongoose.model('User', UserSchema);

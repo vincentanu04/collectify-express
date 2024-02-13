@@ -10,7 +10,7 @@ router.get('/', indexController.index);
 
 router.get('/categories', categoryController.index);
 
-// router.get('/items', itemController.index);
+router.get('/items', itemController.index);
 
 // router.get('/users', userController.index);
 
