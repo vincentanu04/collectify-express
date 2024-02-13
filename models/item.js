@@ -21,4 +21,8 @@ ItemSchema.virtual('collected_date_formatted').get(function () {
   );
 });
 
+ItemSchema.virtual('collected_date_iso').get(function () {
+  return DateTime.fromJSDate(this.collected_date).toISODate();
+});
+
 module.exports = mongoose.model('Item', ItemSchema);

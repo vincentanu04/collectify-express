@@ -49,3 +49,36 @@ exports.create_post = [
     }
   }),
 ];
+
+exports.update_get = asyncHandler(async (req, res, next) => {
+  const category = await Category.findById(req.params.id).exec();
+  res.render('category_form', {
+    title: 'Update category',
+    name: category.name,
+  });
+});
+
+exports.update_post = [
+  body('name', 'Category name must be longer than 3 characters.')
+    .trim()
+    .isLength({ min: 3 })
+    .escape(),
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      res.render('category_form', {
+        title: 'Create a category',
+        name: req.body.name,
+        errors: errors.array(),
+      });
+    } else {
+      const newCategory = new Category({
+        name: req.body.name,
+        _id: req.params.id,
+      });
+      await Category.findByIdAndUpdate(req.params.id, newCategory);
+      res.redirect(newCategory.url);
+    }
+  }),
+];

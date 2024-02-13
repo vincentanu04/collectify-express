@@ -24,7 +24,7 @@ block content
         label(for='age') Age 
         input(type='number' name='age' placeholder='20...' value=(age ? age : ''))
 
-      button(type='submit') Create
+      button(type='submit')=title === 'Update user' ? 'Update': 'Create'
 
     .errors
       if errors

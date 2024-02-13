@@ -20,10 +20,10 @@ block content
         select(name="category", required)
           option(value='') -- Please select a category --
           each val in categories
-            if category === val.name
-              option(value=val._id selected)= val.name
+            if category.toString() === val._id.toString()
+              option(value=val._id selected) #{val.name}
             else
-              option(value=val._id)= val.name
+              option(value=val._id) #{val.name}
 
       .form_field 
         label(for='collected_by') Collected by 
@@ -31,7 +31,7 @@ block content
         select(name="collected_by", required)
           option(value='') -- Please select a user --
           each val in users
-            if user === val.name
+            if user.toString() === val._id.toString()
               option(value=val._id selected)= val.name
             else
               option(value=val._id)= val.name
@@ -41,7 +41,7 @@ block content
         label(for='collected_date') Collected date 
         input(type='date' name='collected_date' value=(collected_date ? collected_date : ''))
 
-      button(type='submit') Create
+      button(type='submit')=title === 'Update an item' ? 'Update' : 'Create'
 
     .errors
       if errors

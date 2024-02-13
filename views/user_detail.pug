@@ -13,7 +13,7 @@ block content
 
         .detail_header 
           p #[strong Age]: 
-          p=user.age ? (user.age, 'years old.') : 'Unknown'
+          p=user.age ? (user.age + ' years old.') : 'Unknown'
 
         p(style='margin-top: 1rem;') These are the items collected by #{user.first_name} #{user.family_name}:
 
