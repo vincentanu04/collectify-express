@@ -1,0 +1,25 @@
+extends layout
+
+block content 
+  .user_detail
+    .header
+      h1 #{title}: #[em #{user.family_name}, #{user.first_name}]
+
+    .body 
+      .detail
+        .detail_header
+          p #[strong About]: 
+          p.text_box=user.about
+
+        .detail_header 
+          p #[strong Age]: 
+          p #{user.age} years old.
+
+        p(style='margin-top: 1rem;') These are the items collected by #{user.first_name} #{user.family_name}:
+
+        ul 
+          each item, index in items 
+            li
+              a(href=item.url) #{item.name} 
+            if index < items.length - 1
+              hr
