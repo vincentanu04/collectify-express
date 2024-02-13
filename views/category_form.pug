@@ -1,0 +1,20 @@
+extends layout 
+
+block content 
+  .category_form 
+    .header
+      h1=title
+
+    form(method='post')
+      .form_field
+        label(for='name') Name
+          span  *
+        input(type="text", name="name", placeholder='Category name...', value=(name ? name : 'ha'), required)
+
+      button(type='submit') Create
+
+    .errors
+      if errors
+        ul 
+          each error in errors
+            li=error.msg

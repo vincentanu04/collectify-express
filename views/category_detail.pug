@@ -6,9 +6,12 @@ block content
       h1 #{title}: #[em #{category.name}]
 
     .body 
-      ul 
-        each item, index in items 
-          li
-            a(href=item.url) #{item.name} 
-          if index < items.length - 1
-            hr
+      if items.length > 0
+        ul 
+          each item, index in items 
+            li
+              a(href=item.url) #{item.name} 
+            if index < items.length - 1
+              hr
+      else 
+        p This category has no items...

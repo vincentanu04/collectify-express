@@ -17,9 +17,12 @@ block content
 
         p(style='margin-top: 1rem;') These are the items collected by #{user.first_name} #{user.family_name}:
 
-        ul 
-          each item, index in items 
-            li
-              a(href=item.url) #{item.name} 
-            if index < items.length - 1
-              hr
+        if items.length > 0
+          ul 
+            each item, index in items 
+              li
+                a(href=item.url) #{item.name} 
+              if index < items.length - 1
+                hr
+        else 
+          p This user has no items...

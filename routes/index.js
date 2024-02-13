@@ -9,11 +9,13 @@ const userController = require('../controllers/userController');
 router.get('/', indexController.index);
 
 router.get('/categories', categoryController.index);
-router.get('/categories/:id', categoryController.detail);
 router.get('/categories/create', categoryController.create_get);
-// router.post('/categories/create', categoryController.create_post);
+router.post('/categories/create', categoryController.create_post);
+router.get('/categories/:id', categoryController.detail);
 
 router.get('/items', itemController.index);
+router.get('/items/create', itemController.create_get);
+router.post('/items/create', itemController.create_post);
 router.get('/items/:id', itemController.detail);
 
 router.get('/users', userController.index);

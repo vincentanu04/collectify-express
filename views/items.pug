@@ -8,13 +8,16 @@ block content
         button Add New Item 
 
     .body 
-      ul 
-        each item, index in items 
-          li 
-            a(href=item.url) #{item.name} 
-            p #[em #{item.category.name}]
-            p Collected by: #{item.collected_by.name}
-          if index < items.length - 1
-            hr
+      if items.length > 0
+        ul 
+          each item, index in items 
+            li 
+              a(href=item.url) #{item.name} 
+              p #[em #{item.category.name}]
+              p Collected by: #{item.collected_by.name}
+            if index < items.length - 1
+              hr
+      else 
+        p There are no items...
 
   link(rel="stylesheet", href="/stylesheets/items.css")

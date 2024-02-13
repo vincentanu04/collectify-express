@@ -9,10 +9,13 @@ block content
 
 
     .body 
-      ul 
-        each user, index in users 
-          li
-            a(href=user.url) #{user.name} 
-            p Age: #{user.age}
-          if index < users.length - 1
-            hr
+      if users.length > 0
+        ul 
+          each user, index in users 
+            li
+              a(href=user.url) #{user.name} 
+              p Age: #{user.age}
+            if index < users.length - 1
+              hr  
+      else 
+        p There are no users...
