@@ -2,6 +2,9 @@
   "name": "collectify-express",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": ">=16.17.1"
+  },
   "scripts": {
     "start": "nodemon ./bin/www"
   },
@@ -10,7 +13,9 @@
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "express-async-handler": "^1.2.0",
+    "express-rate-limit": "^7.1.5",
     "express-validator": "^7.0.1",
+    "helmet": "^7.1.0",
     "http-errors": "~1.6.3",
     "luxon": "^3.4.4",
     "mongoose": "^8.1.2",
