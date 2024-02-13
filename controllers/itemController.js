@@ -145,3 +145,26 @@ exports.update_post = [
     }
   }),
 ];
+
+exports.delete_get = asyncHandler(async (req, res, next) => {
+  const item = await Item.findById(req.params.id).exec();
+  if (item === null) {
+    const err = new Error('Item not found');
+    err.status = 404;
+    next(err);
+  }
+  res.render('item_delete', { title: 'Delete item', item });
+});
+
+exports.delete_post = asyncHandler(async (req, res, next) => {
+  const item = await Item.findById(req.params.id).exec();
+
+  if (item === null) {
+    const err = new Error('Item not found');
+    err.status = 404;
+    next(err);
+  }
+
+  await Item.findByIdAndDelete(req.params.id);
+  res.redirect('/items');
+});

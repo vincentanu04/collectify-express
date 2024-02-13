@@ -257,3 +257,7 @@ form button {
 .errors {
   margin-top: 2rem;
 }
+
+ul.delete {
+  margin-top: 1rem;
+}

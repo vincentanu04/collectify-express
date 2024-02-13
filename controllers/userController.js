@@ -117,3 +117,25 @@ exports.update_post = [
     }
   }),
 ];
+
+exports.delete_get = asyncHandler(async (req, res, next) => {
+  const [user, items] = await Promise.all([
+    User.findById(req.params.id).exec(),
+    Item.find({ collected_by: req.params.id }).exec(),
+  ]);
+  console.log(items);
+  res.render('user_delete', { title: 'Delete user', user, items });
+});
+
+exports.delete_post = asyncHandler(async (req, res, next) => {
+  const user = await User.findById(req.params.id).exec();
+
+  if (user === null) {
+    const err = new Error('Category not found');
+    err.status = 404;
+    next(err);
+  }
+
+  await User.findByIdAndDelete(req.params.id);
+  res.redirect('/users');
+});

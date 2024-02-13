@@ -13,6 +13,8 @@ router.get('/categories/create', categoryController.create_get);
 router.post('/categories/create', categoryController.create_post);
 router.get('/categories/:id/update', categoryController.update_get);
 router.post('/categories/:id/update', categoryController.update_post);
+router.get('/categories/:id/delete', categoryController.delete_get);
+router.post('/categories/:id/delete', categoryController.delete_post);
 router.get('/categories/:id', categoryController.detail);
 
 router.get('/items', itemController.index);
@@ -20,6 +22,8 @@ router.get('/items/create', itemController.create_get);
 router.post('/items/create', itemController.create_post);
 router.get('/items/:id/update', itemController.update_get);
 router.post('/items/:id/update', itemController.update_post);
+router.get('/items/:id/delete', itemController.delete_get);
+router.post('/items/:id/delete', itemController.delete_post);
 router.get('/items/:id', itemController.detail);
 
 router.get('/users', userController.index);
@@ -27,6 +31,8 @@ router.get('/users/create', userController.create_get);
 router.post('/users/create', userController.create_post);
 router.get('/users/:id/update', userController.update_get);
 router.post('/users/:id/update', userController.update_post);
+router.get('/users/:id/delete', userController.delete_get);
+router.post('/users/:id/delete', userController.delete_post);
 router.get('/users/:id', userController.detail);
 
 module.exports = router;

@@ -21,7 +21,7 @@ block content
 
         .detail_header 
           p #[strong Collected date]: 
-          p=item.collected_date_formatted || 'Unknown'
+          p=item.collected_date_formatted === 'Invalid DateTime' ? 'Unknown' : item.collected_date_formatted
 
         hr
       

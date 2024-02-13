@@ -1,0 +1,22 @@
+extends layout 
+
+block content 
+  .user_delete 
+    .delete 
+      .header 
+        h1 #{title}: #[em #{user.name}]
+
+      .body 
+        if items.length > 0
+          p Please delete the following items first before attempting to delete this user: 
+            ul.delete 
+              each item in items 
+                li
+                  a(href=item.url) #{item.name}
+        else
+          p Are you sure you want to 
+            span(style='color: red') delete 
+            | the category: #[em #{user.name}] ?
+
+          form(method='post')
+            button(type="submit") Delete

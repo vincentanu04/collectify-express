@@ -82,3 +82,24 @@ exports.update_post = [
     }
   }),
 ];
+
+exports.delete_get = asyncHandler(async (req, res, next) => {
+  const [category, items] = await Promise.all([
+    Category.findById(req.params.id).exec(),
+    Item.find({ category: req.params.id }).exec(),
+  ]);
+  res.render('category_delete', { title: 'Delete category', category, items });
+});
+
+exports.delete_post = asyncHandler(async (req, res, next) => {
+  const category = await Category.findById(req.params.id).exec();
+
+  if (category === null) {
+    const err = new Error('Category not found');
+    err.status = 404;
+    next(err);
+  }
+
+  await Category.findByIdAndDelete(req.params.id);
+  res.redirect('/categories');
+});
