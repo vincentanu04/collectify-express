@@ -1,0 +1,24 @@
+extends layout
+
+block content 
+  .item_detail
+    .header
+      h1 #{title}: #{item.name}
+
+    .body 
+      .detail
+        .detail_header
+          p #[strong About]: 
+          p.text_box=item.info
+
+        .detail_header
+          p #[strong Category]: 
+          a.colored(href=item.category.url) #[em #{item.category.name}]
+
+        .detail_header 
+          p #[strong Collected by]: 
+          a.colored(href=item.collected_by.url) #[em #{item.collected_by.name}]
+
+        .detail_header 
+          p #[strong Collected date]: 
+          p #{item.collected_date_formatted}.

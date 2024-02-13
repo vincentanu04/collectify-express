@@ -1,4 +1,5 @@
 const asyncHandler = require('express-async-handler');
+const { DateTime } = require('luxon');
 
 const Item = require('../models/item');
 
@@ -8,4 +9,21 @@ exports.index = asyncHandler(async (req, res, nect) => {
     .populate('collected_by')
     .exec();
   res.render('items', { title: 'Items', items });
+});
+
+exports.detail = asyncHandler(async (req, res, next) => {
+  const [item] = await Promise.all([
+    Item.findById(req.params.id)
+      .populate('category')
+      .populate('collected_by')
+      .exec(),
+  ]);
+
+  if (item === null) {
+    const err = new Error('Item not found');
+    err.status = 404;
+    return next(err);
+  }
+
+  res.render('item_detail', { title: 'Item', item });
 });

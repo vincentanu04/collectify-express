@@ -1,0 +1,14 @@
+extends layout
+
+block content 
+  .category_detail
+    .header
+      h1 #{title}: #[em #{category.name}]
+
+    .body 
+      ul 
+        each item, index in items 
+          li
+            a(href=item.url) #{item.name} 
+          if index < items.length - 1
+            hr

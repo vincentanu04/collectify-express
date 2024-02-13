@@ -12,6 +12,10 @@ router.get('/categories', categoryController.index);
 
 router.get('/items', itemController.index);
 
-// router.get('/users', userController.index);
+router.get('/users', userController.index);
+
+router.get('/categories/:id', categoryController.detail);
+
+router.get('/items/:id', itemController.detail);
 
 module.exports = router;

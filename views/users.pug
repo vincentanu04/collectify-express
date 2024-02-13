@@ -1,0 +1,18 @@
+extends layout 
+
+block content 
+  .users 
+    .header 
+      h1=title 
+      a(href='/users/create')
+        button Add New User
+
+
+    .body 
+      ul 
+        each user, index in users 
+          li
+            a(href=user.url) #{user.name} 
+            p Age: #{user.age}
+          if index < users.length - 1
+            hr
