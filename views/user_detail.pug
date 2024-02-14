@@ -9,7 +9,7 @@ block content
       .detail
         .detail_header
           p #[strong About]: 
-          p.text_box=user.about || 'No information'
+          p.text_box!=user.about || 'No information'
 
         .detail_header 
           p #[strong Age]: 
